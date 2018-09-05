@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("/readinglist")//将所有处理器方法都映射到了“/”这个URL路径上***
+@RequestMapping("/readingList")//将所有处理器方法都映射到了“/”这个URL路径上***
 public class ReadingListController {
     private ReadingListRepository readingListRepository;
 
@@ -28,7 +28,7 @@ public class ReadingListController {
         List<Book> readingList =
                 readingListRepository.findByReader(reader);
         if (readingList != null) {
-            model.addAttribute("Book", readingList);//1.往前台传数据，可以传对象，可以传List，通过el表达式 ${}可以获取到，类似于request.setAttribute("Bool",readingList)效果一样。
+            model.addAttribute("books", readingList);//1.往前台传数据，可以传对象，可以传List，通过el表达式 ${}可以获取到，类似于request.setAttribute("Bool",readingList)效果一样。
         }
         return "readingList";
     }

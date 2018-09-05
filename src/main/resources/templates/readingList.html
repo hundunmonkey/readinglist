@@ -1,23 +1,24 @@
 <html xmlns:th="http://www.springframework.org/schema/data/jaxb">
-    <head>
-        <title>Reading List</title>
-        <link rel="stylesheet" th:href="@{/style.css}"></link>//th.标签无法使用
-    </head>
+<head>
+    <title>Reading List</title>
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+    //th.标签无法使用
+</head>
 
-    <boby>
+<boby>
     <h2>Your Reading List</h2>
     <div th:unless="${#lists.isEmpty(books)}">
-        <dl th:each="book:${books}">
+        <dl th:each="book : ${books}">
             <dt class="bookHeadline">
-                <span th:text="${book.title}">Title</span>span> by
-                <span th:text="${book.author}">Author>Title</span>
-                (ISBN :<span th: text="${book.isbn}">ISBN</span>
+                <span th:text="${book.title}">Title</span> by
+                <span th:text="${book.author}">Author</span>
+                (ISBN: <span th:text="${book.isbn}">ISBN</span>)
             </dt>
             <dd class="bookDescription">
-        <span th :if="${book.description}"
-              th:text="${book.description}">Description</span>
+          <span th:if="${book.description}"
+                th:text="${book.description}">Description</span>
                 <span th:if="${book.description eq null}">
-            No description available</span>
+                No description available</span>
             </dd>
         </dl>
     </div>
